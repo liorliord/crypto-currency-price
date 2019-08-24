@@ -30,7 +30,7 @@ class CryptoPriceInteractor {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                    result -> var list: MutableList<Pair<Long, Double>> = mutableListOf()
+                    result -> val list: MutableList<Pair<Long, Double>> = mutableListOf()
                     result.values.forEach {  pair -> list.add(pair.x to pair.y)}
                     onFinishListener.onChartResultSuccess(list)
                 },

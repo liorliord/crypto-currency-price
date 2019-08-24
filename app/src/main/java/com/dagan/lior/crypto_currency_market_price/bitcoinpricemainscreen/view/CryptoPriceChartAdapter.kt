@@ -1,5 +1,6 @@
 package com.dagan.lior.crypto_currency_market_price.bitcoinpricemainscreen.view
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
@@ -33,6 +34,7 @@ class CryptoPriceChartAdapter {
     }
 
     class MyValueFormatter : ValueFormatter() {
+        @SuppressLint("SimpleDateFormat")
         override fun getFormattedValue(value: Float): String {
             return SimpleDateFormat("dd-MM-yy").format(Date(((value * 1000).toLong())))
         }

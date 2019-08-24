@@ -3,6 +3,7 @@ package com.dagan.lior.crypto_currency_market_price.login.presenter
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
+import androidx.annotation.NonNull
 import com.google.firebase.auth.FirebaseUser
 import com.dagan.lior.crypto_currency_market_price.bitcoinpricemainscreen.view.CryptoPriceActivity
 import com.dagan.lior.crypto_currency_market_price.login.model.FirebaseInteractor
@@ -25,7 +26,7 @@ class LoginPresenter(
         }
     }
 
-    override fun onSignUpSuccess(currentUser: FirebaseUser?) {
+    override fun onSignInSuccess(currentUser: FirebaseUser?) {
         loginView?.hideLoginProgress()
         val intent = Intent(context, CryptoPriceActivity::class.java)
         intent.putExtra("currentUser", currentUser?.uid.toString())
@@ -33,7 +34,7 @@ class LoginPresenter(
         loginView?.endActivity()
     }
 
-    override fun onSignUpFailed(error: String) {
+    override fun onSignInFailed(error: String) {
         loginView?.hideLoginProgress()
         loginView?.showToast(error, Toast.LENGTH_SHORT)
     }

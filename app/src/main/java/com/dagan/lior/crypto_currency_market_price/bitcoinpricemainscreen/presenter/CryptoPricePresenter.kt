@@ -62,7 +62,7 @@ class CryptoPricePresenter(private var cryptoPriceView: CryptoPriceView?,
     }
 
     fun onStop() {
-        lastPrice?.let { firebaseInteractor.setPreviousPrice(it) }
+        lastPrice?.let { price -> firebaseInteractor.setPreviousPrice(price) }
     }
 
     fun onDestroy() {

@@ -7,10 +7,6 @@ import com.google.firebase.auth.FirebaseUser
 
 class FirebaseInteractor(context: Context) {
 
-    companion object {
-        var currentUser: String? = null
-    }
-
     init {
         FirebaseApp.initializeApp(context)
     }
@@ -24,41 +20,39 @@ class FirebaseInteractor(context: Context) {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     if (task.result!!.signInMethods!!.isNotEmpty()) {
-                        currentUser = firebaseAuth.currentUser.toString()
-                        signIn(onFinishListener, email, password)
+                        tryToSignIn(onFinishListener, email, password)
                     } else {
-                        signUp(onFinishListener, email, password)
+                        tryToSignUp(onFinishListener, email, password)
                     }
                 } else {
-                    task.exception?.message?.let { message -> onFinishListener.onSignUpFailed(message) }
+                    task.exception?.message?.let { message -> onFinishListener.onSignInFailed(message) }
                 }
             }
     }
 
-    private fun signUp(onFinishListener: OnFinishListener, email: String, password: String) {
+    private fun tryToSignUp(onFinishListener: OnFinishListener, email: String, password: String) {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {task ->
             if (task.isSuccessful) {
-                onFinishListener.onSignUpSuccess(firebaseAuth.currentUser)
-                currentUser = firebaseAuth.currentUser.toString()
+                onFinishListener.onSignInSuccess(firebaseAuth.currentUser)
             } else {
-                task.exception?.message?.let { message -> onFinishListener.onSignUpFailed(message) }
+                task.exception?.message?.let { message -> onFinishListener.onSignInFailed(message) }
             }
         }
     }
 
-    private fun signIn(onFinishListener: OnFinishListener, email: String, password: String) {
+    private fun tryToSignIn(onFinishListener: OnFinishListener, email: String, password: String) {
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    onFinishListener.onSignUpSuccess(firebaseAuth.currentUser)
+                    onFinishListener.onSignInSuccess(firebaseAuth.currentUser)
                 } else {
-                    task.exception?.message?.let { message -> onFinishListener.onSignUpFailed(message) }
+                    task.exception?.message?.let { message -> onFinishListener.onSignInFailed(message) }
                 }
             }
     }
 
     interface OnFinishListener {
-        fun onSignUpSuccess(currentUser: FirebaseUser?)
-        fun onSignUpFailed(error: String)
+        fun onSignInSuccess(currentUser: FirebaseUser?)
+        fun onSignInFailed(error: String)
     }
 }
