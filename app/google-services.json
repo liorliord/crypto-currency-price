@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "564275229016",
+    "firebase_url": "https://search-acc26.firebaseio.com",
+    "project_id": "search-acc26",
+    "storage_bucket": "search-acc26.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564275229016:android:ea926b87c6cf012c",
+        "android_client_info": {
+          "package_name": "com.dagan.lior.crypto_currency_market_price"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "564275229016-7iub8foar1guusnmv3n9d521s789b84i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNJMgmTxafelCB4KvMWpluXM7lMafEV4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "564275229016-7iub8foar1guusnmv3n9d521s789b84i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564275229016:android:eff9f6867cb7cb23",
+        "android_client_info": {
+          "package_name": "com.example.googlesearch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "564275229016-7iub8foar1guusnmv3n9d521s789b84i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNJMgmTxafelCB4KvMWpluXM7lMafEV4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "564275229016-7iub8foar1guusnmv3n9d521s789b84i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
